@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 //Defining schema
-const formSchema = new mongoose.Schema({
+const meetSchema = new mongoose.Schema({
     name: { type: String, required: true, trim: true },
     agenda: { type: String, required: true, trim: true },
     subject: { type: String, required: true, trim: true },
@@ -9,9 +9,11 @@ const formSchema = new mongoose.Schema({
     startTime: { type: String, required: true, trim: true },
     endTime: { type: String, required: true, trim: true },
     link: { type: String, required: true, trim: true },
+    scheduled: { type: Boolean, default: true },
+    // scheduled = meet not cancelled yet,false= meet cancelled
 })
 
 //Model
-const formModel = mongoose.model("form", formSchema)
+const meetModel = mongoose.model("meet", meetSchema)
 
-module.exports = formModel
+module.exports = meetModel

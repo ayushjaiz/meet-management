@@ -1,11 +1,11 @@
-const formModel = require('../models/form.js');
+const Meet = require('../models/meetDB.js');
 
 const inputForm = async (req, res) => {
     const { name, agenda, subject, date, startTime, endTime, link } = req.body
 
     if (name && agenda && subject && date && startTime && endTime && link) {
         try {
-            const doc = new formModel({ name, agenda, subject, date, startTime, endTime, link })
+            const doc = new Meet({ name, agenda, subject, date, startTime, endTime, link })
             const form = await doc.save()
             res.status(201).send({ "status": "success", "message": "Input Success" })
         } catch (error) {
